@@ -7,4 +7,6 @@ add_executable(bank_account_practice main.cpp
         Person.cpp
         Person.h
         Interfaces.cpp
-        Interfaces.h)
+        Interfaces.h
+        BankAccount.cpp
+        BankAccount.h)

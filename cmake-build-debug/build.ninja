@@ -67,6 +67,12 @@ build CMakeFiles/bank_account_practice.dir/Interfaces.cpp.obj: CXX_COMPILER__ban
   OBJECT_DIR = CMakeFiles\bank_account_practice.dir
   OBJECT_FILE_DIR = CMakeFiles\bank_account_practice.dir
 
+build CMakeFiles/bank_account_practice.dir/BankAccount.cpp.obj: CXX_COMPILER__bank_account_practice_unscanned_Debug D$:/Bau/Bank$ Account/bank-account-practice/BankAccount.cpp || cmake_object_order_depends_target_bank_account_practice
+  DEP_FILE = CMakeFiles\bank_account_practice.dir\BankAccount.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\bank_account_practice.dir
+  OBJECT_FILE_DIR = CMakeFiles\bank_account_practice.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target bank_account_practice
@@ -75,7 +81,7 @@ build CMakeFiles/bank_account_practice.dir/Interfaces.cpp.obj: CXX_COMPILER__ban
 #############################################
 # Link the executable bank_account_practice.exe
 
-build bank_account_practice.exe: CXX_EXECUTABLE_LINKER__bank_account_practice_Debug CMakeFiles/bank_account_practice.dir/main.cpp.obj CMakeFiles/bank_account_practice.dir/Person.cpp.obj CMakeFiles/bank_account_practice.dir/Interfaces.cpp.obj
+build bank_account_practice.exe: CXX_EXECUTABLE_LINKER__bank_account_practice_Debug CMakeFiles/bank_account_practice.dir/main.cpp.obj CMakeFiles/bank_account_practice.dir/Person.cpp.obj CMakeFiles/bank_account_practice.dir/Interfaces.cpp.obj CMakeFiles/bank_account_practice.dir/BankAccount.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\bank_account_practice.dir
