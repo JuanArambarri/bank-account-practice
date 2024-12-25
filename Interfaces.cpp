@@ -4,19 +4,28 @@
 
 #include "Interfaces.h"
 #include "limits"
+#include "string"
 
-void Interfaces::showMenu() {
+void Interfaces::starterMenu() {
     std::cout << "Welcome to Nook Bank\n" ;
     std::cout << "----------------------\n";
     std::cout << "are you a new or existing user? (y/n)";
 }
-void Interfaces::showUserMenu() {
-    std::cout;
+void Interfaces::userMenu() {
+    std::cout << "Please choose one of the following options by their number.\n";
+    std::cout << "1. Check Balance.\n";
+    std::cout << "2. Withdraw.\n";
+    std::cout << "3. Deposit.\n";
+    std::cout << "4. Transfer.\n";
+    std::cout << "5. Create a fixed term investment.\n";
+    std::cout << "6. View fixed term rates.\n";
+    std::cout << "0. Exit";
 }
 Person Interfaces::createPerson() {
-    std::cout << "Please enter your name. \n";
+    std::cout << "Please enter your full name. \n";
     std::string name;
-    std::cin >> name;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::getline(std::cin, name); //skipping input;
     std::cout << "Please enter your age \n";
     int age;
     while (true){

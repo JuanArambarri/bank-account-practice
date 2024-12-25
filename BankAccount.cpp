@@ -7,6 +7,7 @@
 
 
 /*
+ * bankaccount should be an ID number and ask a password
  * bool BankAccount::findUser(int idnumber) {
     if ( == idnumber){
         return true;

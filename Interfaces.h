@@ -10,9 +10,9 @@
 
 class Interfaces {
 public:
-    static void showMenu();
-    static void showUserMenu();
+    static void starterMenu();
     static Person createPerson();
+    static void userMenu();
 };
 
 
