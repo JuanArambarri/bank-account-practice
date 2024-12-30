@@ -5,12 +5,11 @@
 #include "BankAccount.h"
 
 
-
-/*
- * bankaccount should be an ID number and ask a password
- * bool BankAccount::findUser(int idnumber) {
-    if ( == idnumber){
-        return true;
-    }else return false;
-}
- */
+bool BankAccount::findUser(std::vector<Person> persons, int idnumber) {
+    for (int i = 0; i < persons.size(); ++i) {
+        if (persons[i].id == idnumber) {
+            return true;
+        } else return false;
+    }
+    return false;
+};

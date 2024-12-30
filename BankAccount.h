@@ -5,11 +5,13 @@
 #ifndef BANK_ACCOUNT_PRACTICE_BANKACCOUNT_H
 #define BANK_ACCOUNT_PRACTICE_BANKACCOUNT_H
 #include <iostream>
+#include <vector>
+#include "Person.h"
 
 
 class BankAccount {
 public:
-    static bool findUser(int idnumber);
+    static bool findUser(std::vector<Person> persons, int idnumber);
 
 };
 

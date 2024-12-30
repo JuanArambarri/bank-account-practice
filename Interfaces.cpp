@@ -6,11 +6,12 @@
 #include "limits"
 #include "string"
 
-void Interfaces::starterMenu() {
-    std::cout << "Welcome to Nook Bank\n" ;
-    std::cout << "----------------------\n";
-    std::cout << "are you a new or existing user? (y/n)";
+bool Interfaces::charValidInput(char input) {
+    if (input != 'Y' && input != 'N' && input != 'y' && input != 'n'){
+        return false;
+    }else return true;
 }
+
 void Interfaces::userMenu() {
     std::cout << "Please choose one of the following options by their number.\n";
     std::cout << "1. Check Balance.\n";
@@ -20,6 +21,12 @@ void Interfaces::userMenu() {
     std::cout << "5. Create a fixed term investment.\n";
     std::cout << "6. View fixed term rates.\n";
     std::cout << "0. Exit";
+}
+
+void Interfaces::starterMenu() {
+    std::cout << "Welcome to Nook Bank\n" ;
+    std::cout << "----------------------\n";
+    std::cout << "are you a new or existing user? (y/n)";
 }
 Person Interfaces::createPerson() {
     std::cout << "Please enter your full name. \n";

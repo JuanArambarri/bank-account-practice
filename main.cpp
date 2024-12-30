@@ -10,24 +10,44 @@ int main() {
     Interfaces::starterMenu();
     char input;
     std::cin >> input;
-    while(input != 'Y' && input != 'N' && input != 'y' && input != 'n'){
+    while (!Interfaces::charValidInput(input)) {
         std::cout << "please type 'y' or 'n'.\n";
         std::cin >> input;
     }
     int idNumber;
-    if(input == 'y' || input == 'Y'){
+    if (input == 'y' || input == 'Y') {
         std::cout << "please write your ID number\n";
         std::cin >> idNumber;
-//        if (BankAccount::findUser(idNumber)){
-//            std::cout << "Welcome " ; // has to call the account owner's name.
-//        }else while(!BankAccount::findUser(idNumber)){
-//            std::cout << "The ID provided does not match any user.\n";
-//        }
+        if (BankAccount::findUser(users, idNumber)) {
+            std::cout << "Welcome back, user!\n";
+        } else {
+            std::cout << "The ID provided does not match any user.\n";
+            std::cout << "Would you like to create a user?(y/n)\n";
+            std::cin >> input;
+            while (input != 'Y' && input != 'N' && input != 'y' && input != 'n') {
+                std::cout << "please type 'y' or 'n'.\n";
+                std::cin >> input;
+            }
+            if (input == 'y' || input == 'Y'){
+                Person aPerson = Interfaces::createPerson();
+                users.push_back(aPerson);
+            }else{
+                std::cout << "Thank you for using Nook Bank ATM.\n";
+            }
+        }
     }else{
-        Person aPerson = Interfaces::createPerson();
-        users.push_back(aPerson);
-        //::createUser(); should call a function called create user that shows a step by step process of creating a user
-        //Should call another function that creates the struct + bank account
+        std::cout << "Would you like to create a user?(y/n)\n";
+        std::cin >> input;
+        while (!Interfaces::charValidInput(input)) {
+            std::cout << "please type 'y' or 'n'.\n";
+            std::cin >> input;
+        }
+        if (input == 'y' || input == 'Y'){
+            Person aPerson = Interfaces::createPerson();
+            users.push_back(aPerson);
+        }else{
+            std::cout << "Thank you for using Nook Bank ATM.\n";
+        }
     }
     bool exit = false;
     while(!exit){
@@ -67,6 +87,9 @@ int main() {
             default:
                break;
         }
-    }
+
+    }//should return to pre ATM menu
+    Interfaces::starterMenu();
+    //Need a getchar or similar to avoid closing.
     return 0;
 }

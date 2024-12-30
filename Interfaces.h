@@ -13,6 +13,7 @@ public:
     static void starterMenu();
     static Person createPerson();
     static void userMenu();
+    static bool charValidInput(char input);
 };
 
 
