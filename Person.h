@@ -8,6 +8,8 @@
 
 
 struct Person {
+    Person();
+    Person(int age, std::string name, std::string nationality, int id);
     int age;
     std::string name;
     std::string nationality;
