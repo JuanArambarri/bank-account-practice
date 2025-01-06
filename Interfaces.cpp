@@ -21,7 +21,7 @@ bool Interfaces::yesNoValidation(char input) {
 }
 
 void Interfaces::userMenu(std::vector <BankAccount> &accounts) {
-    std::cout << "Welcome to Nook Bank\n" << accounts[0].name << " - " << accounts[0].id << "\n"; //review
+    //BankAccount::showUser();
     std::cout << "Please choose one of the following options by their number.\n";
     std::cout << "1. Check Balance.\n";
     std::cout << "2. Withdraw.\n";
@@ -60,6 +60,9 @@ void Interfaces::userMenu(std::vector <BankAccount> &accounts) {
         case 0:
             std::cout << "Thank you for using Nook Bank.";
             break;
+        default:
+            std::cout << "Thank you for using Nook Bank.";
+            break;
     }
 }
 
@@ -75,50 +78,35 @@ void Interfaces::starterMenu(std::vector <BankAccount> &accounts, std::vector<Pe
         std::cin >> idNumber;
         if (BankAccount::findUser(users, idNumber)) {
             std::cout << "Welcome back, user!\n";
-            /*
-             * if (BankAccount::findAccount(idNumber,accounts)){
-             * std::cout << "please input your password: \n";
-             *}
-             */
+             if (BankAccount::findAccount(idNumber,accounts)){
+             std::cout << "please input your password: \n";
+             std::string password;
+             std::cin >> password;
+                 if (BankAccount::passwordValidator(password,accounts, idNumber)){
+                     std::cout << "Logging in..." << std::endl;
+                 }
+             }
         } else {
             std::cout << "The ID provided does not match any user.\n";
-            std::cout << "Would you like to create a user?(y/n)\n";
+            std::cout << "Would you like to create a user and account?(y/n)\n";
             std::cin >> input;
+            if (yesNoValidation(input)){
+                createUser(users,accounts);
+            }else{
+                std::cout << "Thank you for using Nook Bank ATM.\n";
+            }
+        }
+    }else{
+        std::cout << "Would you like to create a user and account?(y/n)\n";
+        std::cin >> input;
+        if (yesNoValidation(input)){
+            createUser(users,accounts);
+        }else{
+            std::cout << "Thank you for using Nook Bank ATM.\n";
         }
     }
 }
-//! REFERENCE
-//    if (input == 'y' || input == 'Y') {
-//        std::cout << "please write your ID number\n";
-//        std::cin >> idNumber;
-//        if (BankAccount::findUser(users, idNumber)) {
-//            std::cout << "Welcome back, user!\n";
-//        } else {
-//            std::cout << "The ID provided does not match any user.\n";
-//            std::cout << "Would you like to create a user?(y/n)\n";
-//            std::cin >> input;
-//            if (Interfaces::yesNoValidation(input)){
-//                Person aPerson = Interfaces::createUser(&users, &accounts);
-//                users.push_back(aPerson);
-//            }else{
-//                std::cout << "Thank you for using Nook Bank ATM.\n";
-//            }
-//        }
-//    }else{
-//        std::cout << "Would you like to create a user?(y/n)\n";
-//        std::cin >> input;
-//        while (!Interfaces::charValidInput(input)) {
-//            std::cout << "please type 'y' or 'n'.\n";
-//            std::cin >> input;
-//        }
-//        if (input == 'y' || input == 'Y'){
-//            Person aPerson = Interfaces::createPerson();
-//            users.push_back(aPerson);
-//        }else{
-//            std::cout << "Thank you for using Nook Bank ATM.\n";
-//        }
-//    }
-void Interfaces::createUser(std::vector <Person>* users, std::vector <BankAccount>* accounts) {
+void Interfaces::createUser(std::vector <Person> &users, std::vector <BankAccount> &accounts) {
     std::cout << "Please enter your full name. \n";
     std::string name;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -148,5 +136,9 @@ void Interfaces::createUser(std::vector <Person>* users, std::vector <BankAccoun
         }else break;
     }
     Person aPerson (age,name,nationality,nationalID);
-    users->push_back(aPerson);
+    users.push_back(aPerson);
+    std::cout << "Please create a 8 character long password for your account" << std::endl;
+    std::string password;
+    std::cin >> password;
+    accounts.emplace_back(0,aPerson.id,password);
 }
